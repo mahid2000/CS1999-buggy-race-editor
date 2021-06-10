@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if rm == "True" %}
-    <h1>Removed Buggy {{ buggy['id'] }}</h1>
-  {% else %}
+  
     <h1>Updated Buggy</h1>
-  {% endif %}
+ 
 
   <p>
     {{ msg }}
@@ -21,6 +19,10 @@
   </pb>
   <p>
     {{ price_error }}
+  </p>
+
+  <p>
+    {{ error_msg }}
   </p>
 
 {% endblock %}

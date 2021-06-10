@@ -3,19 +3,23 @@
 
 {% block content %}
 
-<style>
+   <style>
     .cs1999-tasks {
-      border-top: 1px solid black;
+      border-top: 1px solid rgb(212, 11, 11);
+      border-bottom: 1px solid rgb(212, 11, 11);
       margin-top: 4em;
+      border-radius:25px ;
     }
     .cs1999-tasks .task {
       margin: 1em;
       padding: 1em;
       border: 1px solid black;
+      border-radius:25px ;
     }
     .cs1999-tasks .task h2 {
-      border-bottom: 3px solid gray;
+      border-bottom: 3px solid rgb(17, 54, 216);
     }
+    
   </style>
   
   <!-- see tech note about the poster:  
@@ -36,9 +40,10 @@
   <section class="cs1999-tasks">
   
     <div class="task">
-      <h2>0-GET</h2>
+        <h2>0-GET Get the source code</h2>
       <p>
-        I forked the repo on GitHub and then used <code>git clone</code> to make a local copy.
+        I forked the repo onto my GitHub and then used the <code>$ git clone ssh://github.com/mahid2000/CS1999-buggy-race-editor.git</code>
+        command on the git bash terminal to clone the repository onto my local machine.
       </p>
       <p>
         Once the repo was on my own machine I was able to commit changes to version control
@@ -47,14 +52,186 @@
         username and password every time I pushed.
       </p>
     </div>
+
+    <div class="task">
+        <h2>0-RUN Get app running and view it in a browser</h2>
+        <p>
+          I opened a git bash to the cloned buggy editor directory on my local machine and installed all the required 
+          python libraries using <code>pip install -r requirements.txt</code> . To run the webserver I used the command 
+          <code>Python app.py</code> which output <code>* Running on http://0.0.0.0:5000/ </code> telling me the adress 
+          of the webpage which I copied and pasted into my browser to be greeted with the index page of the buggy editor. 
+        </p>
+        <p>
+            I used <code>ssh</code> instead of <code>https</code> as I had already set up the ssh key on my 
+            local machine allowing me easy secure access to github without having to log-in evry time.
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>0-CHANGE Make a change to a template and see it appear</h2>
+        <p>
+          To make sure that the webpage was being updated properly I conducted a 'smoke test' of sorts by editing the <code>index.html</code> 
+          file and observing the changes appear. I chanegd the heading from 'Buggy Editor' to 'Mahids Buggy Editor' and refeshed the page. 
+          The title was sucessfuly changed confirming that the templates were being used sucessfuly in the manner they were inteded. If the 
+          webpage hadnt changed after refreshing then that wouldve indiucated that I was in the wrong repo.
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>1-ADD Add more data to the form</h2>
+        <p>
+          To add more items to the form i edited the <code>buggy-form.html</code> template. I used the html <code><'input'></code> tags to allow 
+          for the form to collect data from users. I also used other html input tags such as 'radio, selct' to 
+          collect data aswell. Html tags such as <code><'p'>,<'h'>,<'a href:""'>,<'img'></code> were used to show 'paragraphs', 'headings', 'links' and 'images' respectively.
+        </p>
+        <p>
+          Later down the development stage I created my own html tags and tag classes such as <code>a.download</code> which is the tag for a download button. 
+          (P.S. You can find it on this page!!!)
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>1-VALID Add basic data validation</h2>
+        <p>
+          To validate data I edited the <code>app.py</code> file. All the data processing SHOULD ocurr in the <code>'GET'</code> script as that is when the form 
+          is returned to us with the data. 
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
   
-  
+    <div class="task">
+        <h2>1-STYLE Style your editor just how you like it</h2>
+        <p>
+          <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>2-EDIT Edit the record by loading its current values into the form</h2>
+        <p>
+          <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+      
+    <div class="task">
+        <h2>2-FORM Make the form better</h2>
+        <p>
+          <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>2-COST Calculate and save the game cost of the buggy</h2>
+        <p>
+          <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>2-RULES Add validation according to the game rules</h2>
+        <p>
+          <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+          <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+ 
+    <div class="task">
+      <h2>3-ENV Switch between dev and production environments</h2>
+      <p>
+        <!-- sentence on _how_ you fixed it -->
+      </p>
+      <p>
+        <!-- sentence(s) on anything interesting/incomplete you did -->
+      </p>
+    </div>
+
+
+    <div class="task">
+        <h2>3-AUTOFILL Add auto-fill to the edit forms</h2>
+        <p>
+            <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+            <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>3-MULTI Allow different buggies to be created</h2>
+        <p>
+            <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+            <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>3-DEL Allow buggies to be deleted</h2>
+        <p>
+            <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+            <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    <div class="task">
+        <h2>3-FLAG Display the pennant graphically</h2>
+        <p>
+            <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+            <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+
+    <div class="task">
+        <h2>3-TESTS Write some tests</h2>
+        <p>
+            <!-- sentence on _how_ you fixed it -->
+        </p>
+        <p>
+            <!-- sentence(s) on anything interesting/incomplete you did -->
+        </p>
+    </div>
+
+    
+
+    <div class="spacer">
+        <pb>
+            <a href="https://github.com/mahid2000/CS1999-buggy-race-editor.git" class = "download" download>download</a>
+        </pb>
+    </div> 
+   
   <!-- this closes the section: keep it in! -->
   </section>
 
 
+
+<br> <br>
+
     <pb>
         <a href="/" class="button">home</a>
     </pb>
+
 
 {% endblock %}

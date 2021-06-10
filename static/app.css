@@ -107,3 +107,28 @@ h2 {
   -webkit-text-stroke: 7px rgba(0, 0, 0, 0.90);
   text-align: center;
 }
+a.download, input.download {
+  border: 1px solid #000000;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 0.25em;
+  text-decoration: under;
+  background-color: #07640c;
+  color: #ff0000;
+  box-shadow: 5px 5px 5px #999999;
+  width: 93%;
+  display: block;
+}
+a.download:hover {
+  background-color: #07640c;
+  color: #3610c2;
+}
+input {
+  padding: 0.5em;
+  font-size: 100%;
+  background-color: rgba(255, 255, 255, 0.750);
+  border-radius: 10px;
+}
+input.download {
+  background-color: #99ff99;
+}

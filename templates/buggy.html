@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-  <h1>Buggy</h1>
+  {% if rm == "True" %}
+    <h1>Removed Buggy {{ buggy['id'] }}</h1>
+  {% else %}
+    <h1>Buggy</h1>
+  {% endif %}
   {% for buggy in buggies %}
       <table>
       <tr>
@@ -71,13 +74,20 @@
       <tr>
         <td>Total Mass:</td><td>{{ buggy['mass'] }} Kg </td>
       </tr>
-      <tr> 
-        <td colspan="2"><a href="/edit/{{ buggy['id'] }}" type="button" >Edit</a></td>
-      </tr>
-      <tr>
-        <td colspan="2"><a href="/delete/{{ buggy['id'] }}" type="button" >Delete</a></td>
-      </tr>
+      {% if rm != "True" %}
+        <tr> 
+          <td colspan="2"><a href="/edit/{{ buggy['id'] }}" type="button" >Edit</a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="/delete/{{ buggy['id'] }}" type="button" >Delete</a></td>
+        </tr>
+      {% endif %}
     </table>
+    
+
+
+
+
   {% endfor %}
 
 

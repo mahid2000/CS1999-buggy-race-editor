@@ -1,3 +1,4 @@
+from typing import DefaultDict
 from flask import Flask, render_template, request, jsonify
 import sqlite3 as sql
 
@@ -73,57 +74,63 @@ def create_buggy():
             banging = request.form['banging']
         except:
             banging = "False"
-        algo = request.form['algo']  
+        algo = request.form['algo'] 
+        buggy_id = request.form['id'] 
            
-
+        error = ""
         # Validate if the inputs follow the rules, and if they dont then give an error message
         if qty_wheels.isdigit() == False or int(qty_wheels) < 4 or (int(qty_wheels) % 2) != 0 :
             msg += f'{qty_wheels} is not a valid quantity!!....Your buggy needs to have a EVEN NUMBER of wheels...at least 4 of them!!'
-            error = 't'
+            error += 't'
         else:
-            error = 'f'
+            error += 'f'
         if primary_motive_power == 'fusion' or primary_motive_power == 'wind' or primary_motive_power == 'solar' or primary_motive_power == 'thermo':
             if int(primary_motive_power_units) != 1:
                 msg += ' You can only have one non-consumable power source!'
-                error = 't'
+                error += 't'
         else:
-            error = 'f'
+            error += 'f'
+        if int(primary_motive_power_units) < 1:
+            msg += ' You have no power!!!'
+            error += 't'
+        else:
+            error += 'f'           
         if auxiliary_motive_power == 'fusion' or auxiliary_motive_power == 'wind' or auxiliary_motive_power == 'solar' or auxiliary_motive_power == 'thermo':
             if int(auxiliary_motive_power_units) != 1:
                 msg += ' You can only have one non-consumable auxiliary power source!'
-                error = 't'
+                error += 't'
         else:
-            error = 'f'  
+            error += 'f'    
         if int(hamster_booster) < 0:
-            error = 't'
+            error += 't'
             msg += ' Please input a valid quantity of Hamster Boosters!!'
         else:
-            error = 'f'
+            error += 'f'
         if primary_motive_power == 'hamster' and int(primary_motive_power_units) > 0:
             msg += ' Hamster Boosters are only effective on Hamsters!!!'
-            error = 't'
+            error += 't'
         else:
-            error = 'f'
+            error += 'f'
         if auxiliary_motive_power == 'hamster' and int(auxiliary_motive_power_units) > 0:
             msg += ' Hamster Boosters are only effective on Hamsters!!!'
-            error = 't'
+            error += 't'
         else:
-            error = 'f'          
+            error += 'f'          
         if flag_pattern != 'plain' and flag_color == flag_color_secondary:
-            error = 't'
+            error += 't'
             msg += 'You cant have two of the same colours unless its a PLAIN flag !!!'
         else:
-            error = 'f'
+            error += 'f'
         if qty_tyres < qty_wheels:
-            error = 't'
+            error += 't'
             msg += ' You cant drive without tyres!!...They can get puntured so its good to have spares...'
         else:
-            error = 'f'
+            error += 'f'
         if algo == 'buggy':
             error = 't'
             msg += ' Your Operating System seems to be buggy.... please update it!!!'
         else:
-            error = 'f'
+            error += 'f'
 
         # Add up the cost and mass of the buggy
         cost = 0
@@ -245,7 +252,7 @@ def create_buggy():
             cost += 5 * int(qty_attacks)
             mass += 10 * int(qty_attacks)
         elif attack == 'flame' :
-            cost += 20 * int(qty_attacks)#
+            cost += 20 * int(qty_attacks)
             mass += 12 * int(qty_attacks)
         elif attack == 'charge' :
             cost += 28 * int(qty_attacks)
@@ -254,16 +261,16 @@ def create_buggy():
             cost += 30 * int(qty_attacks)
             mass += 10 * int(qty_attacks)
 
-        if cost > LEGAL_VAL:
+        if cost > LEGAL_VAL: 
             msg2 += 'This Buggy costs too much!!!! You have a £200 budget!!!!'
         else:
-            error = 'f'
+            error += 'f'
 
 
         # Check for errors... If there are errors, redo get fourm and send error message else try update Buggy Database
-        if error == 't': 
-            return render_template("buggy-form.html", msg  = msg, buggy = record)
-        buggy_id = request.form['id']
+        for ch in error:
+            if ch == 't' :
+                return render_template("buggy-form.html", msg  = msg, buggy = record)
         try:
             with sql.connect(DATABASE_FILE) as con:
                 cur = con.cursor()
@@ -285,7 +292,7 @@ def create_buggy():
             msg = "error in update operation"
         finally:
             con.close()
-        return render_template("updated.html", msg = msg, price = cost, weight = mass, price_error = msg2)
+        return render_template("updated.html", msg = msg, price = cost, weight = mass, price_error = msg2, error_msg = error)
 
 
 #------------------------------------------------------------
@@ -316,12 +323,18 @@ def edit_buggy(buggy_id):
 @app.route('/delete/<buggy_id>')
 def delete_buggy(buggy_id):
     con = sql.connect(DATABASE_FILE)
+    con2 = sql.connect(DATABASE_FILE)
+    con2.row_factory = sql.Row
     con.row_factory = sql.Row
     cur = con.cursor()  
     cur.execute("DELETE FROM buggies WHERE id=?", (buggy_id))
+    cur2 = con2.cursor()
+    cur2.execute("SELECT * FROM buggies WHERE id=?", (buggy_id))
+    records = cur2.fetchall()
     record = cur.fetchone()
+
     con.commit()
-    return render_template("updated.html", rm="True", buggy = record)
+    return render_template("buggy.html",buggies = records, rm="True", buggy = record)
 
 #------------------------------------------------------------
 # You probably don't need to edit this... unless you want  to ;)
