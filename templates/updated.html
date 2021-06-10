@@ -1,14 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-  <h1>Updated Buggy</h1>
+  {% if rm == "True" %}
+    <h1>Removed Buggy {{ buggy['id'] }}</h1>
+  {% else %}
+    <h1>Updated Buggy</h1>
+  {% endif %}
 
   <p>
     {{ msg }}
   </p>
   <p>
+    Your Buggy Costs £{{ price }}
+  </p>
+  <p>
+    And it weighs {{ weight }}Kg
+  </p>
+  <pb>
     <a href="/" class="button">home</a>
+  </pb>
+  <p>
+    {{ price_error }}
   </p>
 
 {% endblock %}

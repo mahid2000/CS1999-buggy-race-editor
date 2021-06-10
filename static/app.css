@@ -3,39 +3,48 @@ html{
   padding: 0; 
 }
 body {
-  font-family: sans-serif;
+  font-family: "Allan"; font-variant: normal; 
   margin: 0;
   padding: 0;
-  font-size: 1.2em;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.418);
+  font-size: 2.5em;
   color: #000000;
-  background: repeating-linear-gradient(
-    45deg,
-    #ffffee,
-    #ffffee 2em,
-    #eeeeee 2em,
-    #eeeeee 4em
+  background-color: #eee;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.80) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.80) 75%, rgba(0, 0, 0, 0.80)),
+  linear-gradient(-45deg, rgba(0, 0, 0, 0.8) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.80) 75%, rgba(0, 0, 0, 0.80));
+  background-size: 200px 200px;
   );
 }
 .main-content {
   min-height: 100vh;
   padding: 1em;
-  background: #ffffff;
   margin: 0 0 0 3em;
+  font-family: cursive;
 }
 h1 {
+  text-transform: capitalize;
   margin: 0 0 1em 0;
+  font-family: "Copperplate", fantasy; font-variant: normal; 
+  color:white;
+  background-color: rgba(245, 245, 245, 0.699);
+  border-radius: 25px;
+  -webkit-text-stroke: 7px rgba(0, 0, 0, 0.90);
+  text-align: center;
 }
 p {
-  margin: 1em 0;
+  margin: 2em 0
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.750);
+  border-radius: 10px;
 }
 a.button, input.button {
   border: 1px solid #000000;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 0.25em;
-  text-decoration: none;
+  text-decoration: under;
   background-color: #ffffff;
-  color: #000000;
+  color: #ff0000;
   box-shadow: 5px 5px 5px #999999;
 }
 a.button:hover {
@@ -45,6 +54,8 @@ a.button:hover {
 input {
   padding: 0.5em;
   font-size: 100%;
+  background-color: rgba(255, 255, 255, 0.750);
+  border-radius: 10px;
 }
 input.button {
   background-color: #99ff99;
@@ -53,6 +64,10 @@ table {
   border: 1px solid #000000;
   border-collapse: collapse;
   margin: 0 0 2em 0;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgba(255, 255, 255, 0.750);
+  border-radius: 10px;
 }
 table td, table th {
   padding: 0.25em;
@@ -60,5 +75,35 @@ table td, table th {
   padding: 0.5rem;
 }
 .spacer {
-  margin: 3em 0;
+  text-align: center;
+}
+label {
+  background-color: rgba(255, 255, 255, 0.750);
+  border-radius: 10px;
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.flag_h {
+  background: repeating-linear-gradient(
+  to right,
+
+);
+}
+h2 {
+  text-transform: capitalize;
+  margin: 0 0 1em 0;
+  font-family: "Copperplate", fantasy; font-variant: normal; 
+  color:white;
+  background-color: rgba(245, 245, 245, 0.699);
+  border-radius: 25px;
+  -webkit-text-stroke: 7px rgba(0, 0, 0, 0.90);
+  text-align: center;
 }

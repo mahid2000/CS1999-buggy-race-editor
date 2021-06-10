@@ -24,11 +24,38 @@ print("- Opened database successfully in file \"{}\"".format(DATABASE_FILE))
 connection.execute("""
 
   CREATE TABLE IF NOT EXISTS buggies (
-    id                    INTEGER PRIMARY KEY,
-    qty_wheels            INTEGER DEFAULT 4,
-    flag_color            VARCHAR(20),
-    flag_color_secondary  VARCHAR(20),
-    flag_pattern          VARCHAR(20)
+    id                             INTEGER PRIMARY KEY,
+    qty_wheels                     INTEGER DEFAULT 4,
+
+    
+    power_type                     VARCHAR(20),
+    power_units                    INTEGER DEFAULT 1,
+
+
+    aux_power_type                 VARCHAR(20),
+    aux_power_units                INTEGER DEFAULT 0,
+    hamster_booster                INTEGER DEFAULT 0,
+
+    flag_color                     VARCHAR(20),
+    flag_pattern                   VARCHAR(20),
+    flag_color_secondary           VARCHAR(20),
+
+
+    tyres                          VARCHAR(20)DEFAULT knobbly,
+    qty_tyres                      INTEGER DEFAULT 4,
+    armour                         VARCHAR(20),
+
+    attack                         VARCHAR(20),
+    qty_attacks                    INTEGER DEFAULT 0,
+
+    fireproof                      boolean DEFAULT false,
+    insulated                      boolean DEFAULT false,
+    antibiotic                     boolean DEFAULT false,
+    banging                        boolean DEFAULT false,
+    algo                           VARCHAR(20) DEFAULT steady,
+
+    cost                           INTEGER,
+    mass                           INTEGER
   )
 
 """)
