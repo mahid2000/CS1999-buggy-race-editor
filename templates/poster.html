@@ -94,69 +94,65 @@
         <h2>1-VALID Add basic data validation</h2>
         <p>
           To validate data I edited the <code>app.py</code> file. All the data processing SHOULD ocurr in the <code>'GET'</code> script as that is when the form 
-          is returned to us with the data. 
+          is returned to us with the data. Within this script we must first load all the data inputs from the form using <code>var = request.form['var']</code>.
+          After loding all the variables in I used if and elif loops to return error messages. For basic data such as numbers I used the <code>.isdigit()</code> syntax to find out if the input was a number, if it wasnt then i returned a error.
         </p>
         <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
+          To pass the error back to user I added up the errors to a string variable <code>msg</code> which I then returned with the <code>buggy-form.html</code> template. I used <code>{{msg}}</code> which allowed me to display the error messages in the returned buggy form template.
         </p>
     </div>
   
     <div class="task">
         <h2>1-STYLE Style your editor just how you like it</h2>
         <p>
-          <!-- sentence on _how_ you fixed it -->
+          I used and created a variety of html tags in the <code>app.css</code> file to style my buggy editor. In the css file I modified the colour, borders, styles and other variables to give it a distinct look. I used a checkerted pattern using gradients to create a racing flag background. However to make the page more user friendly I ahd to tone down the transparency of the background colours and place a light white background behind any writing elements. I done this by editing the background colour and transparency of a div class called spacer.
         </p>
         <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
+          To make the css changes load I had to prevent the browser from caching. I done this by making the pages dynamic using the instructins from the cache busting notes on css TechNotes. I also managed to use a picture as a link for this poster. 
         </p>
     </div>
 
     <div class="task">
         <h2>2-EDIT Edit the record by loading its current values into the form</h2>
         <p>
-          <!-- sentence on _how_ you fixed it -->
+           I allowed the previously inputed values to be laoded into the form by using delimiters to use python inside the <code>'buggy-form.html'</code>  to fo if conditional loops like 'if buggy['key'] == ""'... value == ""  .The delimiters extend the functionality of python and the variables into html. This allowed me to succesfuly preload the form with values that I had previously uploaded to the database.
         </p>
         <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
+           I succesfully did this however when doing 3-Multi, it broke due to a bug with the buggy keys.... so it will not be in the final version :(
         </p>
     </div>
       
     <div class="task">
         <h2>2-FORM Make the form better</h2>
         <p>
-          <!-- sentence on _how_ you fixed it -->
+          To make the form better I used CSS styling to make the writing easier to read by placing white backgrounds and  centering the buttons and headings to the centre of the page.
         </p>
-        <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
-        </p>
+
     </div>
 
     <div class="task">
         <h2>2-COST Calculate and save the game cost of the buggy</h2>
         <p>
-          <!-- sentence on _how_ you fixed it -->
+            To do cost I used If loops in the 'POST' script to add to a initialised variable caleld cost. I then returned cost to the updated form and uploaded ti to the databse. I also used a if statement to check if the cost was more than the 'LEGAL_VAL' (which is a constant variable which can be manualy changed by changing it in the code depending on what the max cost of the buggy was for each race), and if it was I returned a error message in the same way i did in 3-valid.
         </p>
         <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
+          I also added a pound sign and returned it to the updated page where i used <code>{{cost}}</code> to show the cost. The same was done for weight.
         </p>
     </div>
 
     <div class="task">
         <h2>2-RULES Add validation according to the game rules</h2>
         <p>
-          <!-- sentence on _how_ you fixed it -->
-        </p>
-        <p>
-          <!-- sentence(s) on anything interesting/incomplete you did -->
+          For the rules I used the same method as 1-VALID but replaced the conditions in the if stateemnts with the rules for each input, which if not followed, would reasult in a error message. The rules were obtained from the buggy race server spec.
         </p>
     </div>
 
  
     <div class="task">
       <h2>3-ENV Switch between dev and production environments</h2>
-      <p>
-        <!-- sentence on _how_ you fixed it -->
-      </p>
+      <a>
+        <img src="static\buggy_img\3-ENV.jpg">
+      </a>jpg
       <p>
         <!-- sentence(s) on anything interesting/incomplete you did -->
       </p>
@@ -164,55 +160,22 @@
 
 
     <div class="task">
-        <h2>3-AUTOFILL Add auto-fill to the edit forms</h2>
-        <p>
-            <!-- sentence on _how_ you fixed it -->
-        </p>
-        <p>
-            <!-- sentence(s) on anything interesting/incomplete you did -->
-        </p>
-    </div>
-
-    <div class="task">
         <h2>3-MULTI Allow different buggies to be created</h2>
         <p>
-            <!-- sentence on _how_ you fixed it -->
-        </p>
-        <p>
-            <!-- sentence(s) on anything interesting/incomplete you did -->
+            I followed the vieos on 3 multi to allow me to create and display multiple buggies and their tables. This was done by changing the buggy id from a default=1 to a range of id's inputted by the form.
         </p>
     </div>
 
     <div class="task">
         <h2>3-DEL Allow buggies to be deleted</h2>
         <p>
-            <!-- sentence on _how_ you fixed it -->
+            I used app.route and the swl fuctions to SELECT and DELETE each buggy
         </p>
-        <p>
-            <!-- sentence(s) on anything interesting/incomplete you did -->
-        </p>
-    </div>
 
-    <div class="task">
-        <h2>3-FLAG Display the pennant graphically</h2>
-        <p>
-            <!-- sentence on _how_ you fixed it -->
-        </p>
-        <p>
-            <!-- sentence(s) on anything interesting/incomplete you did -->
-        </p>
     </div>
 
 
-    <div class="task">
-        <h2>3-TESTS Write some tests</h2>
-        <p>
-            <!-- sentence on _how_ you fixed it -->
-        </p>
-        <p>
-            <!-- sentence(s) on anything interesting/incomplete you did -->
-        </p>
-    </div>
+
 
     
 
